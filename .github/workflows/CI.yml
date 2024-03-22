@@ -2,7 +2,7 @@ name: CI
 run-name: CI Pipeline is running 🚀
 on: [push]
 jobs:
-  runs-on: ubuntu-latest
   lint:
+    runs-on: ubuntu-latest
     steps:
       - run: npm run lint
