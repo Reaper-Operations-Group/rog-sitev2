@@ -1,8 +1,8 @@
 name: CI
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: CI Pipeline is running 🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
+  runs-on: ubuntu-latest
+  lint:
     steps:
       - run: npm run lint
