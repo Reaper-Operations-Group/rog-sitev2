@@ -1,44 +1,23 @@
-import SteamProvider, { PROVIDER_ID } from 'next-auth-steam'
-import NextAuth from 'next-auth/next';
-import { AuthOptions } from 'next-auth';
-import { NextApiRequest, NextApiResponse } from 'next';
+import SteamProvider from 'next-auth-steam'
+import NextAuth from 'next-auth/next'
 
-function getAuthOptions(req: NextApiRequest): AuthOptions {
-    return {
-        providers: req
-            ? [
-                SteamProvider(req, {
-                    clientSecret: process.env.STEAM_SECRET!,
-                    callbackUrl: 'http://localhost:3000/api/auth/callback',
-                }),
-            ]
-            : [],
-        callbacks: {
-            jwt({ token, account, profile }) {
-                if (account?.provider === PROVIDER_ID) {
-                    token.steam = profile;
-                }
-                return token;
-            },
-            session({ session, token }) {
-                if ('steam' in token) {
-                    // @ts-expect-error
-                    session.user.steam = token.steam;
-                }
-                return session;
-            },
-        },
-    };
-}
+import type { NextRequest } from 'next/server'
 
 async function handler(
-    req: NextApiRequest,
-    res: NextApiResponse
+    req: NextRequest,
+    ctx: { params: { nextauth: string[] } }
 ) {
-    return NextAuth(req, res, getAuthOptions(req));
+    return NextAuth(req, ctx, {
+        providers: [
+            SteamProvider(req, {
+                clientSecret: process.env.STEAM_SECRET!,
+                callbackUrl: 'http://localhost:3000/api/auth/callback'
+            })
+        ]
+    })
 }
 
 export {
     handler as GET,
-    handler as POST,
+    handler as POST
 }
