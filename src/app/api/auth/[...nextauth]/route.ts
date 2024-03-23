@@ -3,7 +3,7 @@ import NextAuth from 'next-auth/next';
 import { AuthOptions } from 'next-auth';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export function getAuthOptions(req: NextApiRequest): AuthOptions {
+function getAuthOptions(req: NextApiRequest): AuthOptions {
     return {
         providers: req
             ? [
