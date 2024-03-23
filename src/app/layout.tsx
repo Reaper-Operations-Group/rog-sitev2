@@ -3,6 +3,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import { Experimental_CssVarsProvider } from "@mui/material";
 import theme from "@/theme";
 import Analytics from "../../components/Analytics/Analytics";
+import { Providers } from "../../components/Auth/Providers";
 
 export const metadata: Metadata = {
   title: "ROG Website",
@@ -19,9 +20,9 @@ export default function RootLayout({
       <body>
         <AppRouterCacheProvider>
           <Experimental_CssVarsProvider theme={theme}>
-            <main>
-              {children}
-            </main>
+            <Providers>
+                {children}
+            </Providers>
           </Experimental_CssVarsProvider>
         </AppRouterCacheProvider>
 
