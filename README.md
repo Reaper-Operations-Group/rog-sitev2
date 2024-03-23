@@ -1,3 +1,35 @@
+# Overview
+
+## Steam Session Handling
+
+### Server Side
+
+```node
+import { getServerSession } from "next-auth";
+import { getAuthOptions } from "./api/auth/[...nextauth]/route";
+
+//@ts-ignore
+const session = await getServerSession(getAuthOptions());
+console.log("Server Session: ", session);
+```
+
+### Client Side
+
+```node
+import { useSession } from "next-auth/react";
+const { data: session, status } = useSession();
+```
+
+## Prisma ORM Database Syncing
+
+Run the following to sync the schema with the database
+
+```bash
+npx prisma migrate dev
+```
+
+## Accessing
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
