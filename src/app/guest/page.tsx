@@ -1,9 +1,7 @@
-import { Typography } from "@mui/material";
+import WIP from "@/components/WIP/WIP";
 
 export default function Guest() {
     return (
-        <Typography variant="h1">
-            Guest Page
-        </Typography>
+        <WIP/>
     )
 }

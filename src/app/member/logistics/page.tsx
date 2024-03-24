@@ -1,9 +1,7 @@
-import { Typography } from "@mui/material";
+import WIP from "@/components/WIP/WIP";
 
 export default function Logistics(){
     return (
-        <Typography variant="h1">
-            Logistics Page
-        </Typography>
+        <WIP/>
     );
 }

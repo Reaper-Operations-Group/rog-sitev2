@@ -1,9 +1,7 @@
-import { Typography } from "@mui/material";
+import WIP from "@/components/WIP/WIP";
 
 export default function Operations(){
     return (
-        <Typography variant="h1">
-            Operations Page
-        </Typography>
+        <WIP/>
     );
 }
