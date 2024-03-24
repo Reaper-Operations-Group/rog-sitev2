@@ -9,6 +9,28 @@ const roboto = Roboto({
 });
 
 const theme = experimental_extendTheme({
+  colorSchemes: {
+    light: {
+      palette: {
+        primary: {
+          main: '#d44141',
+        },
+        secondary: {
+          main: '#1f67c9',
+        },
+      }
+    },
+    dark: {
+      palette: {
+        primary: {
+          main: '#d44141',
+        },
+        secondary: {
+          main: '#1f67c9',
+        },
+      }
+    }
+  },
   typography: {
     fontFamily: roboto.style.fontFamily,
   },
