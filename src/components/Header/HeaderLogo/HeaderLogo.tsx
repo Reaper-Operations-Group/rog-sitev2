@@ -40,6 +40,6 @@ export default function HeaderLogo(props: Readonly<{
         >
             ROG
         </Typography>
-        </>
+    </>
     )
 }
