@@ -9,21 +9,20 @@ import { navbarPages, navbarSettings } from '@/util/constants';
 export default async function Header() {
     return (
         <>
-        <AppBar position="static">
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
+            <AppBar position="static">
+                <Container maxWidth="xl">
+                    <Toolbar disableGutters>
+                        <HeaderLogo screenSize="md" />
+                        <HeaderMenuNav screenSize="md" pages={navbarPages} />
 
-                    <HeaderLogo screenSize="md" />
-                    <HeaderMenuNav screenSize="md" pages={navbarPages} />
+                        <HeaderMenuNav screenSize="sm" pages={navbarPages} />
+                        <HeaderLogo screenSize="sm" />
 
-                    <HeaderMenuNav screenSize="sm" pages={navbarPages} />
-                    <HeaderLogo screenSize="sm" />
-
-                    <HeaderProfileNav settings={navbarSettings} />
-                </Toolbar>
-            </Container>
-        </AppBar>
-        <Toolbar />
+                        <HeaderProfileNav settings={navbarSettings} />
+                    </Toolbar>
+                </Container>
+            </AppBar>
+            <Toolbar />
         </>
     );
 }

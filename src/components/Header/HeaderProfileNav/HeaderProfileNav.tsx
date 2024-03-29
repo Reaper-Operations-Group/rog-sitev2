@@ -54,7 +54,7 @@ export default function HeaderProfileNav(props: Readonly<{
                                     </Link>
                                 </MenuItem>
                             ))}
-                            <MenuItem onClick={()=>signOut()}>
+                            <MenuItem onClick={() => signOut()}>
                                 <Typography textAlign="center">Logout</Typography>
                             </MenuItem>
                         </Menu>

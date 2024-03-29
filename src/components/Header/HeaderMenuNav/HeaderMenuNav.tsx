@@ -62,16 +62,19 @@ export default function HeaderMenuNav(props: {
     ) : (
         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {props.pages.map((page) => (
-                <Button
+                <Link
                     key={page.label}
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                    <Link sx={{
+                    sx={{
                         color: "white",
                         textDecoration: "none"
-                    }} href={page.link}>{page.label}</Link>
-                </Button>
+                    }} href={page.link}>
+                    <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{ my: 2, color: 'white', display: 'block' }}
+                    >
+                        {page.label}
+                    </Button>
+                </Link>
             ))}
         </Box>
     )
