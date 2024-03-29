@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
-import { Box, Container, Experimental_CssVarsProvider } from "@mui/material";
+import { Experimental_CssVarsProvider } from "@mui/material";
 import theme from "@/theme";
 import Analytics from "@/components/Analytics/Analytics";
 import { Providers } from "@/components/Auth/Providers";

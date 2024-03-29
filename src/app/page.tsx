@@ -1,5 +1,5 @@
 import SignInButton from "@/components/Auth/SignInButton";
-import { internalURLs } from "@/util/constants";
+import { internalURLs, assetLinks } from "@/util/constants";
 import { Box, Link, Typography, Button, Paper } from "@mui/material";
 
 export default async function Home() {
@@ -15,7 +15,7 @@ export default async function Home() {
           <Box
             component="img"
             alt="logo"
-            src="/images/ROGLogo.webp"
+            src={assetLinks.rogLogo}
             height="250px"
             marginBottom="20px"
             paddingTop="10px"
