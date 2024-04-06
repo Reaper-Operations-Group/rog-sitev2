@@ -1,12 +1,19 @@
 import SteamProvider from 'next-auth-steam'
 import NextAuth from 'next-auth/next'
 import { PrismaAdapter } from "@auth/prisma-adapter"
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient, Session } from "@prisma/client"
 
 import type { NextRequest } from 'next/server'
 import { AuthOptions } from 'next-auth'
 
 const prisma = new PrismaClient();
+
+interface UserSession extends Session {
+    user: {
+        steamId: string | undefined
+        role: string
+    }
+}
 
 function getAuthOptions(req: NextRequest): AuthOptions {
     return {
@@ -33,6 +40,8 @@ function getAuthOptions(req: NextRequest): AuthOptions {
 
                 // @ts-expect-error
                 session.user.steamId = steamAccount?.steamId;
+                // @ts-expect-error
+                session.user.role = prismaUser.role;
 
                 return session;
             },
