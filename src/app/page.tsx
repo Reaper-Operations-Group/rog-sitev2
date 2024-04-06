@@ -1,43 +1,15 @@
-import SignInButton from "@/components/Auth/SignInButton";
-import { internalURLs, assetLinks } from "@/util/constants";
-import { Box, Link, Typography, Button, Paper } from "@mui/material";
+
+import { getServerSession } from "next-auth";
+import { getAuthOptions } from "./api/auth/[...nextauth]/route";
+import LandingPage from "@/components/Pages/LandingPage";
+import { internalURLs } from "@/util/constants";
+import { handleRedirect } from "@/util/redirects";
 
 export default async function Home() {
-  return (
-      <Box
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        textAlign="center"
-      >
-        <Paper elevation={1} square={false}>
-          <Box
-            component="img"
-            alt="logo"
-            src={assetLinks.rogLogo}
-            height="250px"
-            marginBottom="20px"
-            paddingTop="10px"
-          />
+  const session = await getServerSession(getAuthOptions());
+  handleRedirect(session, internalURLs.root);
 
-          <Box
-            display="flex"
-            flexDirection="column"
-            gap="20px"
-            padding="10px"
-          >
-            <Typography>
-              Welcome to the Reaper Operations Group!
-            </Typography>
-            <Typography>
-              Explore more about us in our <Link href={internalURLs.guest}><Button variant="outlined">Guest Portal</Button></Link>
-            </Typography>
-            <Typography>
-              Interested in joining? <SignInButton>join us through steam.</SignInButton>
-            </Typography>
-          </Box>
-        </Paper>
-      </Box>
+  return (
+      <LandingPage/>
     );
 }
