@@ -26,13 +26,23 @@ function getAuthOptions(req?: NextRequest): AuthOptions {
                     },
                     include: {
                         accounts: true,
+                        roles: true
                     },
                 });
 
-                const steamAccount = prismaUser?.accounts.find((a: { provider: string }) => a.provider == "steam");
+                const roles = [];
+                for (let i = 0; i < prismaUser?.roles?.length!; i++) {
+                    const role = prismaUser?.roles[i];
+                    roles.push(await prisma.role.findUnique({
+                        where: {
+                            id: role?.roleId
+                        }
+                    }));
+                }
+                session.user.roles = roles;
 
+                const steamAccount = prismaUser?.accounts.find((a: { provider: string }) => a.provider == "steam");
                 session.user.steamId = steamAccount?.steamId;
-                session.user.role = prismaUser?.role;
 
                 return session;
             },

@@ -27,6 +27,14 @@ Run the following to sync the schema with the database
 npx prisma migrate dev
 ```
 
+## Prisma Studio
+
+Run the following to open the prisma studio client
+
+```bash
+npx prisma studio
+```
+
 ## Development Server
 
 First, run the development server:
