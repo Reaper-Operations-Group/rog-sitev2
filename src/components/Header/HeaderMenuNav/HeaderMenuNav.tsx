@@ -1,7 +1,7 @@
 'use client'
-import * as React from 'react';
 import { Box, IconButton, Menu, MenuItem, Typography, Button, Link } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
+import { useState, MouseEvent } from "react";
 
 export default function HeaderMenuNav(props: {
     screenSize: "sm" | "md",
@@ -10,9 +10,9 @@ export default function HeaderMenuNav(props: {
         label: string
     }[]
 }) {
-    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+    const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
-    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
     };
 

@@ -1,4 +1,4 @@
-import { Role } from "@prisma/client"
+import { RoleName } from "@prisma/client"
 
 declare module "next-auth" {
     // Extend default session
@@ -8,7 +8,7 @@ declare module "next-auth" {
             email: string | undefined,
             image: string | undefined,
             steamId: string | undefined,
-            roles: (Role | null)[]
+            roles: ($Enums.RoleName | undefined )[]
         }
     }
 }
