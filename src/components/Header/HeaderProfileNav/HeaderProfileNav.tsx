@@ -1,7 +1,7 @@
 'use client'
-import * as React from 'react';
 import { Box, Tooltip, Menu, IconButton, MenuItem, Typography, Avatar, Link } from "@mui/material";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useState, MouseEvent } from "react";
 
 export default function HeaderProfileNav(props: Readonly<{
     settings: {
@@ -9,10 +9,10 @@ export default function HeaderProfileNav(props: Readonly<{
         label: string
     }[]
 }>) {
-    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+    const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
     const { data, status } = useSession();
 
-    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
     };
 

@@ -4,14 +4,8 @@ import { getAuthOptions } from "@/app/api/auth/[...nextauth]/route";
 import { authenticateSession } from "@/util/session-management";
 import { internalURLs } from "@/util/constants";
 
-/**
- * Member Page
- * Roles - [Applicant, Contractor]
- */
-export default async function Member(){
+export default async function Recruitment() {
     const session = await getServerSession(getAuthOptions());
-    authenticateSession(session, internalURLs.memberDashboard);
-    return (
-        <WIP/>
-    )
+    authenticateSession(session, internalURLs.memberRecruitment);
+    return <WIP/>
 }

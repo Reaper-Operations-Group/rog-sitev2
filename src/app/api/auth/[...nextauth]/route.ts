@@ -1,5 +1,5 @@
 
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient, RoleName } from "@prisma/client"
 import NextAuth from 'next-auth/next'
 import type { NextRequest } from 'next/server'
 import { AuthOptions } from 'next-auth'
@@ -33,11 +33,11 @@ function getAuthOptions(req?: NextRequest): AuthOptions {
                 const roles = [];
                 for (let i = 0; i < prismaUser?.roles?.length!; i++) {
                     const role = prismaUser?.roles[i];
-                    roles.push(await prisma.role.findUnique({
+                    roles.push((await prisma.role.findUnique({
                         where: {
                             id: role?.roleId
                         }
-                    }));
+                    }))?.name);
                 }
                 session.user.roles = roles;
 
@@ -47,6 +47,24 @@ function getAuthOptions(req?: NextRequest): AuthOptions {
                 return session;
             },
         },
+        events: {
+            async signIn({ user, isNewUser }) {
+                if( isNewUser ) {
+                    const applicantRole = await prisma.role.findFirst({
+                        where: {
+                            name: "APPLICANT"
+                        }
+                    })
+
+                    await prisma.userRoles.create({
+                        data: {
+                            userId: user?.id,
+                            roleId: applicantRole?.id!
+                        }
+                    })
+                }
+            }
+        }
     }
 }
 
