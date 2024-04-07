@@ -6,6 +6,6 @@ import WIP from "@/components/WIP/WIP";
 
 export default async function(){
     const session = await getServerSession(getAuthOptions());
-    authenticateSession(session, internalURLs.guest);
+    authenticateSession(session, internalURLs.admin);
     return <WIP/>
 }
