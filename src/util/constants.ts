@@ -1,6 +1,3 @@
-import { RoleName } from "@prisma/client";
-import { hasRole } from "./session-management";
-
 const internalURLs = {
     root: "/",
     guest: "/guest",
