@@ -23,6 +23,7 @@
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
     "@mui/material-nextjs": "^5.15.11",
+    "@mui/x-data-grid": "^6.19.10",
     "@prisma/client": "^5.12.1",
     "@vercel/postgres": "^0.7.2",
     "@vercel/speed-insights": "^1.0.10",
