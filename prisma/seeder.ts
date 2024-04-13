@@ -43,11 +43,17 @@ async function seedUserRoles(users: { id: string; name: string | null; email: st
     const roles = await prisma.role.findMany();
 
     for (const user of users) {
-        for (let i = 0; i < randomInt(1,3); i++) {
+        const prevRoles: number[] = [];
+        for (let i = 0; i < randomInt(1,5); i++) {
+            let role = randomInt(0, roles.length);
+            while (prevRoles.includes(role)) {
+                role = randomInt(0, roles.length);
+            }
+            prevRoles.push(role);
             await prisma.userRoles.create({
                 data: {
                     userId: user.id,
-                    roleId: roles[randomInt(0, roles.length)].id
+                    roleId: roles[role].id
                 }
             })
         }
